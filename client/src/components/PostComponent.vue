@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1>Latest Posts</h1>
+    <h1>Current Pets</h1>
     <div class="create-post">
-      <label for="create-post">Say Something...</label>
+      <label for="create-post">Add your pet...</label>
       <input type="text" id="create-post" v-model="text" placeholder="Create a post">
       <button v-on:click="createPost">Post!</button>
     </div>
@@ -70,8 +70,10 @@ p.error {
 
 div.post {
   position: relative;
-  border: 1px solid #5bd658;
-  background-color: #bcffb8;
+  border: 1px solid #000000;
+  background-color: #D3F7F6;
+  border-radius: 5px;
+  border-width: medium;
   padding: 10px 10px 30px 10px;
   margin-bottom: 15px;
 }
@@ -87,7 +89,7 @@ div.created-at {
 }
 
 p.text {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 700;
   margin-bottom: 0;
 }
