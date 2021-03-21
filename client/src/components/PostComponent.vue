@@ -1,3 +1,20 @@
+<style>
+div.postTop {
+column-count: 2;
+font-size: x-large;
+font-weight: normal;
+text-align: center;
+}
+
+span.category {
+font-weight: bold;
+}
+
+div.postbottom {
+  font-size: x-large;
+}
+
+</style>
 <template>
   <div class="container">
     <h1>Current Pets</h1>
@@ -58,26 +75,26 @@
         v-bind:item="post"
         v-bind:index="index"
         v-bind:key="post._id"
-      >
+      > 
+        {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`}}
+        <div class="postTop">
+          <span class="category">Name: </span>{{ post.petname }}<br>
+          <span class="category">Weight: </span>{{ post.weight }}<br>
+          <span class="category">Age: </span>{{ post.age }}<br>
+          <span class="category">Breed: </span>{{ post.breed }}<br>
+          <span class="category">Gender: </span>{{ post.gender }}<br>
+          <span class="category">Neutered: </span>{{ post.neutered }}<br>
+          <span class="category">Likes: </span>{{ post.likes }}<br>
+          <span class="category">Dislikes: </span>{{ post.dislikes }}<br>
+          <span class="category">Personality: </span>{{ post.personality }}<br>
+        </div>
+        <br>
+        <img class="text" src="https://lh3.googleusercontent.com/proxy/o87F5qvm8HERJ6RquUh9X_tPOdUr70H0qrcBIhvLBvVqq3S18QrJ05U4Jw86o6BW5mbb-66e9nRajozgOb_SFHov3dkwS19qzxV00Fgo1NxhWg9bf-W4PBKKlrOZ6ocwnWZ1gcbrStY"> <br>
+        <div class="postbottom">
+         <span class="category">Owner: </span>{{ post.ownername }}<br>
+          <span class="category">Phone: </span>{{ post.contactinfo }}<br>
+        </div>
         <button @click="deletePost(post._id)">Delete!</button>
-        {{
-          `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`
-        }}
-        <p class="text">Name: {{ post.petname }}</p>
-        <p class="text">Weight: {{ post.weight }} lbs</p>
-        <p class="text">Age: {{ post.age }} years</p>
-        <p class="text">Breed: {{ post.breed }}</p>
-        <p class="text">Gender: {{ post.gender }}</p>
-        <p class="text">Neutered: {{ post.neutered }}</p>
-        <p class="text">Likes: {{ post.likes }}</p>
-        <p class="text">Dislikes: {{ post.dislikes }}</p>
-        <p class="text">Personality: {{ post.personality }}</p>
-        <p class="text">Owner: {{ post.ownername }}</p>
-        <p class="text">Phone: {{ post.contactinfo }}</p>
-        <img
-          class="text"
-          src="https://lh3.googleusercontent.com/proxy/o87F5qvm8HERJ6RquUh9X_tPOdUr70H0qrcBIhvLBvVqq3S18QrJ05U4Jw86o6BW5mbb-66e9nRajozgOb_SFHov3dkwS19qzxV00Fgo1NxhWg9bf-W4PBKKlrOZ6ocwnWZ1gcbrStY"
-        />
       </div>
     </div>
   </div>
