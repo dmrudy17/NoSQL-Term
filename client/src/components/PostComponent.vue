@@ -17,7 +17,17 @@
         v-on:dblclick="deletePost(post._id)"
       >
         {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`}}
-        <p class="text">{{ post.text }}</p>
+        <p class="text">Name: {{ post.petname }}</p>
+        <p class="text">Weight: {{ post.weight }}</p>
+        <p class="text">Age: {{ post.age }}</p>
+        <p class="text">Breed: {{ post.breed }}</p>
+        <p class="text">Gender: {{ post.gender }}</p>
+        <p class="text">Neutered: {{ post.neutered }}</p>
+        <p class="text">Likes: {{ post.likes }}</p>
+        <p class="text">Dislikes: {{ post.dislikes }}</p>
+        <p class="text">Personality: {{ post.personality }}</p>
+        <p class="text">Owner: {{ post.ownername }}</p>
+        <p class="text">Phone: {{ post.contactinfo }}</p>
       </div>
     </div>
   </div>
