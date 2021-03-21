@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
     ownername: req.body.ownername,
     contactinfo: req.body.contactinfo,
     createdAt: new Date(),
+    text: req.body.text,
   });
   res.status(201).send();
 });
