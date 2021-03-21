@@ -28,6 +28,7 @@
         <p class="text">Personality: {{ post.personality }}</p>
         <p class="text">Owner: {{ post.ownername }}</p>
         <p class="text">Phone: {{ post.contactinfo }}</p>
+        <img class="text" src="https://lh3.googleusercontent.com/proxy/o87F5qvm8HERJ6RquUh9X_tPOdUr70H0qrcBIhvLBvVqq3S18QrJ05U4Jw86o6BW5mbb-66e9nRajozgOb_SFHov3dkwS19qzxV00Fgo1NxhWg9bf-W4PBKKlrOZ6ocwnWZ1gcbrStY">
       </div>
     </div>
   </div>
