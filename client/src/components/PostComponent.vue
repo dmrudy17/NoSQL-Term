@@ -110,7 +110,7 @@ div.postbottom {
         v-bind:key="post._id"
       >
         {{
-          `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`
+          `${post.createdAt.getMonth() + 1}/${post.createdAt.getDate()}/${post.createdAt.getFullYear()}`
         }}
         <div class="postTop">
           <span class="category">Name: </span>{{ post.petname }}<br />
