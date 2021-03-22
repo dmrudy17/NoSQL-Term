@@ -1,19 +1,18 @@
 <style>
 div.postTop {
-column-count: 2;
-font-size: x-large;
-font-weight: normal;
-text-align: center;
+  column-count: 2;
+  font-size: x-large;
+  font-weight: normal;
+  text-align: center;
 }
 
 span.category {
-font-weight: bold;
+  font-weight: bold;
 }
 
 div.postbottom {
   font-size: x-large;
 }
-
 </style>
 <template>
   <div class="container">
@@ -63,6 +62,40 @@ div.postbottom {
         />
         <br />
         <br />
+        <input
+          type="text"
+          id="create-post"
+          v-model="gender"
+          placeholder="Gender"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="likes"
+          placeholder="Likes"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="dislikes"
+          placeholder="Dislikes"
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          id="create-post"
+          v-model="personality"
+          placeholder="Personality"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="contactinfo"
+          placeholder="Phone Number"
+        />
+        <br />
+        <br />
         <button v-on:click="createPost" id="postButton">Post!</button>
       </div>
     </div>
@@ -75,24 +108,31 @@ div.postbottom {
         v-bind:item="post"
         v-bind:index="index"
         v-bind:key="post._id"
-      > 
-        {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`}}
+      >
+        {{
+          `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`
+        }}
         <div class="postTop">
-          <span class="category">Name: </span>{{ post.petname }}<br>
-          <span class="category">Weight: </span>{{ post.weight }}<br>
-          <span class="category">Age: </span>{{ post.age }}<br>
-          <span class="category">Breed: </span>{{ post.breed }}<br>
-          <span class="category">Gender: </span>{{ post.gender }}<br>
-          <span class="category">Neutered: </span>{{ post.neutered }}<br>
-          <span class="category">Likes: </span>{{ post.likes }}<br>
-          <span class="category">Dislikes: </span>{{ post.dislikes }}<br>
-          <span class="category">Personality: </span>{{ post.personality }}<br>
+          <span class="category">Name: </span>{{ post.petname }}<br />
+          <span class="category">Weight: </span>{{ post.weight }}<br />
+          <span class="category">Age: </span>{{ post.age }}<br />
+          <span class="category">Breed: </span>{{ post.breed }}<br />
+          <span class="category">Gender: </span>{{ post.gender }}<br />
+          <span class="category">Neutered: </span>{{ post.neutered }}<br />
+          <span class="category">Likes: </span>{{ post.likes }}<br />
+          <span class="category">Dislikes: </span>{{ post.dislikes }}<br />
+          <span class="category">Personality: </span>{{ post.personality
+          }}<br />
         </div>
-        <br>
-        <img class="text" src="https://lh3.googleusercontent.com/proxy/o87F5qvm8HERJ6RquUh9X_tPOdUr70H0qrcBIhvLBvVqq3S18QrJ05U4Jw86o6BW5mbb-66e9nRajozgOb_SFHov3dkwS19qzxV00Fgo1NxhWg9bf-W4PBKKlrOZ6ocwnWZ1gcbrStY"> <br>
+        <br />
+        <img
+          class="text"
+          src="https://lh3.googleusercontent.com/proxy/o87F5qvm8HERJ6RquUh9X_tPOdUr70H0qrcBIhvLBvVqq3S18QrJ05U4Jw86o6BW5mbb-66e9nRajozgOb_SFHov3dkwS19qzxV00Fgo1NxhWg9bf-W4PBKKlrOZ6ocwnWZ1gcbrStY"
+        />
+        <br />
         <div class="postbottom">
-         <span class="category">Owner: </span>{{ post.ownername }}<br>
-          <span class="category">Phone: </span>{{ post.contactinfo }}<br>
+          <span class="category">Owner: </span>{{ post.ownername }}<br />
+          <span class="category">Phone: </span>{{ post.contactinfo }}<br />
         </div>
         <button @click="deletePost(post._id)">Delete!</button>
       </div>
@@ -115,6 +155,11 @@ export default {
       breed: "",
       neutered: "",
       ownername: "",
+      gender: "",
+      likes: "",
+      dislikes: "",
+      personality: "",
+      contactinfo: "",
     };
   },
   async created() {
@@ -132,7 +177,12 @@ export default {
         this.age,
         this.breed,
         this.neutered,
-        this.ownername
+        this.ownername,
+        this.gender,
+        this.likes,
+        this.dislikes,
+        this.personality,
+        this.contactinfo
       );
       this.posts = await PostService.getPosts();
     },
