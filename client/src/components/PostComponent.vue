@@ -1,57 +1,197 @@
+<style>
+div.postTop {
+  column-count: 2;
+  font-size: x-large;
+  font-weight: normal;
+  text-align: center;
+}
+
+span.category {
+  font-weight: bold;
+}
+
+div.postbottom {
+  font-size: x-large;
+}
+</style>
 <template>
   <div class="container">
     <h1>Current Pets</h1>
-    <div class="create-post">
-      <label for="create-post">Add your pet...</label>
-      <input type="text" id="create-post" v-model="text" placeholder="Create a post">
-      <button v-on:click="createPost">Post!</button>
+    <div class="post">
+      <div class="create-post">
+        <label for="create-post"><strong>Add Your Pet Info</strong></label>
+        <br />
+        <br />
+        <input
+          type="text"
+          id="create-post"
+          v-model="petname"
+          placeholder="Pet Name"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="weight"
+          placeholder="Pet Weight"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="age"
+          placeholder="Pet Age"
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          id="create-post"
+          v-model="breed"
+          placeholder="Breed"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="neutered"
+          placeholder="Neutered Status"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="ownername"
+          placeholder="Owner Name"
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          id="create-post"
+          v-model="gender"
+          placeholder="Gender"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="likes"
+          placeholder="Likes"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="dislikes"
+          placeholder="Dislikes"
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          id="create-post"
+          v-model="personality"
+          placeholder="Personality"
+        />
+        <input
+          type="text"
+          id="create-post"
+          v-model="contactinfo"
+          placeholder="Phone Number"
+        />
+        <br />
+        <br />
+        <button v-on:click="createPost" id="postButton">Post!</button>
+      </div>
     </div>
-    <hr>
+    <hr />
     <p class="error" v-if="error">{{ error }}</p>
     <div class="posts-container">
-      <div class="post"
+      <div
+        class="post"
         v-for="(post, index) in posts"
         v-bind:item="post"
         v-bind:index="index"
         v-bind:key="post._id"
-        v-on:dblclick="deletePost(post._id)"
       >
-        {{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`}}
-        <p class="text">{{ post.text }}</p>
+        {{
+          `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}`
+        }}
+        <div class="postTop">
+          <span class="category">Name: </span>{{ post.petname }}<br />
+          <span class="category">Weight: </span>{{ post.weight }}<br />
+          <span class="category">Age: </span>{{ post.age }}<br />
+          <span class="category">Breed: </span>{{ post.breed }}<br />
+          <span class="category">Gender: </span>{{ post.gender }}<br />
+          <span class="category">Neutered: </span>{{ post.neutered }}<br />
+          <span class="category">Likes: </span>{{ post.likes }}<br />
+          <span class="category">Dislikes: </span>{{ post.dislikes }}<br />
+          <span class="category">Personality: </span>{{ post.personality
+          }}<br />
+        </div>
+        <br />
+        <img
+          class="text"
+          src="https://lh3.googleusercontent.com/proxy/o87F5qvm8HERJ6RquUh9X_tPOdUr70H0qrcBIhvLBvVqq3S18QrJ05U4Jw86o6BW5mbb-66e9nRajozgOb_SFHov3dkwS19qzxV00Fgo1NxhWg9bf-W4PBKKlrOZ6ocwnWZ1gcbrStY"
+        />
+        <br />
+        <div class="postbottom">
+          <span class="category">Owner: </span>{{ post.ownername }}<br />
+          <span class="category">Phone: </span>{{ post.contactinfo }}<br />
+        </div>
+        <button @click="deletePost(post._id)">Delete!</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PostService from '../PostService';
+import PostService from "../PostService";
 export default {
-  name: 'PostComponent',
+  name: "PostComponent",
   data() {
     return {
       posts: [],
-      error: '',
-      text: ''
-    }
+      error: "",
+      text: "",
+      petname: "",
+      weight: "",
+      age: "",
+      breed: "",
+      neutered: "",
+      ownername: "",
+      gender: "",
+      likes: "",
+      dislikes: "",
+      personality: "",
+      contactinfo: "",
+    };
   },
   async created() {
     try {
       this.posts = await PostService.getPosts();
-    } catch(err) {
+    } catch (err) {
       this.error = err.message;
     }
   },
   methods: {
     async createPost() {
-      await PostService.insertPost(this.text);
+      await PostService.insertPost(
+        this.petname,
+        this.weight,
+        this.age,
+        this.breed,
+        this.neutered,
+        this.ownername,
+        this.gender,
+        this.likes,
+        this.dislikes,
+        this.personality,
+        this.contactinfo
+      );
       this.posts = await PostService.getPosts();
     },
     async deletePost(id) {
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -71,7 +211,7 @@ p.error {
 div.post {
   position: relative;
   border: 1px solid #000000;
-  background-color: #D3F7F6;
+  background-color: #d3f7f6;
   border-radius: 5px;
   border-width: medium;
   padding: 10px 10px 30px 10px;

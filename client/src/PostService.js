@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/api/posts/";
+const url = "http://172.26.117.88:5000/api/posts/";
 
 /* eslint-disable no-async-promise-executor */
 
@@ -24,9 +24,31 @@ class PostService {
   }
 
   // Create Post
-  static insertPost(text) {
+  static insertPost(
+    petname,
+    weight,
+    age,
+    breed,
+    neutered,
+    ownername,
+    gender,
+    likes,
+    dislikes,
+    personality,
+    contactinfo
+  ) {
     return axios.post(url, {
-      text,
+      petname,
+      weight,
+      age,
+      breed,
+      neutered,
+      ownername,
+      gender,
+      likes,
+      dislikes,
+      personality,
+      contactinfo,
     });
   }
 

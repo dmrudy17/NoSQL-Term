@@ -13,8 +13,20 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const posts = await loadPostsCollection();
   await posts.insertOne({
-    text: req.body.text,
+    petname: req.body.petname,
+    weight: req.body.weight,
+    age: req.body.age,
+    breed: req.body.breed,
+    gender: req.body.gender,
+    neutered: req.body.neutered,
+    image: req.body.image,
+    likes: req.body.likes,
+    dislikes: req.body.dislikes,
+    personality: req.body.personality,
+    ownername: req.body.ownername,
+    contactinfo: req.body.contactinfo,
     createdAt: new Date(),
+    text: req.body.text,
   });
   res.status(201).send();
 });
