@@ -1,6 +1,7 @@
 <style>
 div.postTop {
   column-count: 2;
+  line-height: normal;
   font-size: x-large;
   font-weight: normal;
   text-align: center;
@@ -11,6 +12,7 @@ span.category {
 }
 
 div.postbottom {
+  line-height: normal;
   font-size: x-large;
 }
 </style>
@@ -110,7 +112,8 @@ div.postbottom {
         v-bind:key="post._id"
       >
         {{
-          `${post.createdAt.getMonth() + 1}/${post.createdAt.getDate()}/${post.createdAt.getFullYear()}`
+          `${post.createdAt.getMonth() +
+            1}/${post.createdAt.getDate()}/${post.createdAt.getFullYear()}`
         }}
         <div class="postTop">
           <span class="category">Name: </span>{{ post.petname }}<br />
