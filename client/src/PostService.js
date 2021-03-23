@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://172.26.117.88:5000/api/posts/";
+const url = "http://172.18.255.213:5000/api/posts/";
 
 /* eslint-disable no-async-promise-executor */
 

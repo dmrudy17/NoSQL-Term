@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <h2>Home Page Placeholder</h2>
-    </div>
+  <div class="home-foot">
+    <h2>Home Page Placeholder</h2>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'HomePage'
-}
+  name: "HomePage",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
