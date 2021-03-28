@@ -1,13 +1,20 @@
 <template>
     <div id ="footer">
-        
-        <div id="authors">
-            <span id="category">Authors:</span> <br>
-             Douglas Rudy, Stephan Gunawardana, Alex Helmick
-        </div>
-        <div id="sourceCode">
-            <span id="category">Source Code:</span>
-            <a href="https://github.com/dmrudy17/NoSQL-Term">https://github.com/dmrudy17/NoSQL-Term</a>
+        <div style="display:table-row">    
+            <div id="authors">
+            <br>
+                <span id="category">Authors:</span> <br>
+                Douglas Rudy, Stephan Gunawardana, Alex Helmick
+            </div>
+            <div id="site-name">
+            <br> <br>
+                Pet Tinder
+            </div>
+            <div id="source-code">
+                <br>
+                <span id="category">Source Code:</span>
+                <a href="https://github.com/dmrudy17/NoSQL-Term"> https://github.com/dmrudy17/NoSQL-Term</a>
+            </div>
         </div>
     </div>
 </template>
@@ -30,16 +37,23 @@ export default {
   height: 100px;
   background-color: #d3f7f6;
   border-top: 2px solid lightgrey;
+  width: 100%;
+  display: table;
 }
 
 #authors {
-    width: 50%;
-    float: left;
+    display: table-cell;
 }
 
-#sourceCode {
-    margin-left: 50%
+#source-code {
+    display: table-cell;
 
+}
+
+#site-name{
+    display: table-cell;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 #category {
