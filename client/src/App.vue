@@ -7,16 +7,12 @@
       <md-button class="md-icon-button2 md-raised md-plain">
         <router-link to="/post" class="App-post-link">Posts</router-link>
       </md-button>
-      
     </div>
     <hr />
     <router-view />
   <div id="nav-color">
     <main-footer></main-footer>
   </div>
-
-
-
   </div>
 </template>
 
