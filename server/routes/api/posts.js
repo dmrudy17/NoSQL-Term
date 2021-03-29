@@ -1,5 +1,32 @@
 const express = require("express");
 const mongodb = require("mongodb");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(new Error("Only .jpg and .png files accepted"), false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+  fileFilter: fileFilter,
+});
 
 const router = express.Router();
 
@@ -10,7 +37,7 @@ router.get("/", async (req, res) => {
 });
 
 // Add Post
-router.post("/", async (req, res) => {
+router.post("/", upload.single("petImage"), async (req, res) => {
   const posts = await loadPostsCollection();
   await posts.insertOne({
     petname: req.body.petname,
@@ -19,7 +46,7 @@ router.post("/", async (req, res) => {
     breed: req.body.breed,
     gender: req.body.gender,
     neutered: req.body.neutered,
-    image: req.body.image,
+    petImage: req.file.path,
     likes: req.body.likes,
     dislikes: req.body.dislikes,
     personality: req.body.personality,
