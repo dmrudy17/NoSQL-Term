@@ -25,31 +25,32 @@ class PostService {
 
   // Create Post
   static insertPost(
-    petname,
+    formData
+    /*petname,
     weight,
     age,
     breed,
     neutered,
     ownername,
     gender,
+    petImage,
     likes,
     dislikes,
     personality,
-    contactinfo
+    contactinfo*/
   ) {
-    return axios.post(url, {
-      petname,
-      weight,
-      age,
-      breed,
-      neutered,
-      ownername,
-      gender,
-      likes,
-      dislikes,
-      personality,
-      contactinfo,
-    });
+    return axios
+      .post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(function() {
+        console.log("SUCCESS!!");
+      })
+      .catch(function() {
+        console.log("FAILURE");
+      });
   }
 
   // Delete Post
