@@ -1,6 +1,6 @@
 <template>
 <div>
-  <b-navbar type="light" variant="primary">
+  <b-navbar type="light" variant="primary" fixed="top">
     <b-navbar-nav>
       <div style="font-size: 5px;">
         <i class="fas fa-dog fa-7x"></i>
