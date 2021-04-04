@@ -35,27 +35,4 @@ export default {
   height: 60px;
   background-color: #d3f7f6;
 }
-.App-home-link {
-  color: red;
-  position: relative;
-}
-.md-icon-button1 {
-  width: 70px;
-  min-width: 40px;
-  height: 40px;
-  position: relative;
-  left: -45%;
-  bottom: 1.5%;
-}
-.md-icon-button2 {
-  width: 70px;
-  min-width: 40px;
-  height: 40px;
-  position: relative;
-  right: -45%;
-  bottom: 1.5%;
-}
-.nav-color {
-  background: red;
-}
 </style>

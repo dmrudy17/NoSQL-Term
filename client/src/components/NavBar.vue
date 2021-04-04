@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="header">
   <b-navbar type="light" variant="primary" fixed="top">
     <b-navbar-nav>
       <div style="font-size: 5px;">
@@ -11,3 +11,9 @@
   </b-navbar>
 </div>
 </template>
+
+<style scoped lang="scss">
+.header {
+  height: 60px;
+}
+</style>
