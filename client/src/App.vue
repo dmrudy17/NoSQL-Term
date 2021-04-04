@@ -1,14 +1,8 @@
 <template>
   <div id="app">
     <div id="nav-color">
-      <md-button class="md-icon-button1 md-raised md-plain">
-        <router-link to="/" class="App-home-link">Home</router-link>
-      </md-button>
-      <md-button class="md-icon-button2 md-raised md-plain">
-        <router-link to="/post" class="App-post-link">Posts</router-link>
-      </md-button>
+      <navbar/>
     </div>
-    <hr />
     <router-view />
   <div id="nav-color">
     <main-footer></main-footer>
@@ -28,7 +22,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/styles/custom.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
