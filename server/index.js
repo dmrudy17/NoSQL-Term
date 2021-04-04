@@ -5,7 +5,6 @@ const app = express();
 
 // Middle ware
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
 app.use(cors());
 
 const posts = require("./routes/api/posts");
