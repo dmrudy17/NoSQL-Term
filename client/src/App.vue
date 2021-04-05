@@ -9,6 +9,7 @@
       </md-button>
     </div>
     <hr />
+    <b-button variant="info">Button</b-button>
     <router-view />
   <div id="nav-color">
     <main-footer></main-footer>

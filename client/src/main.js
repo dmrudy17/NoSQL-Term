@@ -1,9 +1,16 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import Footer from "./components/Footer.vue"
+import Footer from "./components/Footer.vue";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
-Vue.component('main-footer', Footer);
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+
+Vue.component("main-footer", Footer);
 
 Vue.config.productionTip = false;
 
