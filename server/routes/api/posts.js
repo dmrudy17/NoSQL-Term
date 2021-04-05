@@ -1,32 +1,49 @@
 const express = require("express");
+const path = require("path");
 const mongodb = require("mongodb");
 const multer = require("multer");
+const crypto = require("crypto");
+const mongoose = require("mongoose");
+const GridFsStorage = require("multer-gridfs-storage");
+const Grid = require("gridfs-stream");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
-  },
+// Mongo URI
+const mongoURI =
+  "mongodb+srv://abc123:dbUserPassword@vueexpress.y3gki.mongodb.net/vue_express?retryWrites=true&w=majority";
+
+// Create mongo connection
+const conn = mongoose.createConnection(mongoURI);
+
+// Init gfs
+let gfs;
+
+conn.once("open", () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  // is posts collection correct?
+  gfs.collection("posts");
 });
 
-const fileFilter = (req, file, cb) => {
-  // reject a file
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
-    cb(null, true);
-  } else {
-    cb(new Error("Only .jpg and .png files accepted"), false);
-  }
-};
-
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5,
+// Create storage engine
+const storage = new GridFsStorage({
+  url: mongoURI,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString("hex") + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: "posts",
+        };
+        resolve(fileInfo);
+      });
+    });
   },
-  fileFilter: fileFilter,
 });
+const upload = multer({ storage });
 
 const router = express.Router();
 
@@ -34,6 +51,42 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const posts = await loadPostsCollection();
   res.send(await posts.find({}).toArray());
+});
+
+// Get /api/posts/:filename
+router.get("/:filename", async (req, res) => {
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+    // Check if files
+    if (!file || file.length === 0) {
+      return res.status(404).json({
+        err: "No files exist",
+      });
+    }
+    // File exists
+    return res.json(file);
+  });
+});
+
+// Get /api/image/:filename
+router.get("/image/:filename", async (req, res) => {
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+    // Check if files
+    if (!file || file.length === 0) {
+      return res.status(404).json({
+        err: "No files exist",
+      });
+    }
+    // Check if image
+    if (file.contentType === "image/jpeg" || file.contentType === "image/png") {
+      // Read output to browser
+      const readstream = gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    } else {
+      res.status(404).json({
+        err: "Not an image",
+      });
+    }
+  });
 });
 
 // Add Post
@@ -46,7 +99,7 @@ router.post("/", upload.single("petImage"), async (req, res) => {
     breed: req.body.breed,
     gender: req.body.gender,
     neutered: req.body.neutered,
-    petImage: req.file.path,
+    petImage: req.file,
     likes: req.body.likes,
     dislikes: req.body.dislikes,
     personality: req.body.personality,

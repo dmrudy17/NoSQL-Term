@@ -136,7 +136,7 @@ div.postbottom {
         <br />
         <img
           class="text"
-          v-bind:src="`http://localhost:5000/${post.petImage}`"
+          v-bind:src="`http://localhost:5000/api/posts/image/${post.petImage.filename}`"
         />
         <br />
         <div class="postbottom">
