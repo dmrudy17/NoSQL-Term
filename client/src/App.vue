@@ -10,9 +10,9 @@
     </div>
     <hr />
     <router-view />
-  <div id="nav-color">
-    <main-footer></main-footer>
-  </div>
+    <div id="nav-color">
+      <main-footer></main-footer>
+    </div>
   </div>
 </template>
 
