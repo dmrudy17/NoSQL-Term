@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import Footer from "./components/Footer.vue";
+import SwipeCard from "./components/SwipeCard.vue";
+import NavBar from "./components/NavBar.vue";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -11,6 +13,8 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 Vue.component("main-footer", Footer);
+Vue.component("swipe-card", SwipeCard);
+Vue.component("navbar", NavBar);
 
 Vue.config.productionTip = false;
 

@@ -2,13 +2,7 @@
   <div id="app">
     <div id="content-wrap">
       <div id="nav-color">
-        <md-button class="md-icon-button1 md-raised md-plain">
-          <router-link to="/" class="App-home-link">Home</router-link>
-        </md-button>
-        <md-button class="md-icon-button2 md-raised md-plain">
-          <router-link to="/post" class="App-post-link">Posts</router-link>
-        </md-button>
-        <hr />
+        <navbar/>
       </div>
       <b-button variant="info">Button</b-button>
       <router-view />
