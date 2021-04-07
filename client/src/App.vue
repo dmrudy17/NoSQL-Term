@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <navbar/>
-    <hr />
-    <router-view />
-  <div id="nav-color">
-    <main-footer></main-footer>
-  </div>
+    <div id="content-wrap">
+      <div id="nav-color">
+        <navbar/>
+      </div>
+      <b-button variant="info">Button</b-button>
+      <router-view />
+      <main-footer></main-footer>
+    </div>
   </div>
 </template>
 
@@ -29,8 +31,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   font-size: larger;
-  height: 60px;
-  background-color: #d3f7f6;
+
+  position: relative;
+  min-height: 100vh;
 }
 .App-home-link {
   color: red;
@@ -52,7 +55,10 @@ export default {
   right: -45%;
   bottom: 1.5%;
 }
-.nav-color {
-  background: red;
+#nav-color {
+  background-color: #d3f7f6;
+}
+#content-wrap {
+  padding-bottom: 150px;
 }
 </style>
