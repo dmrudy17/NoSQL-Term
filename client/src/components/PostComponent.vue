@@ -134,10 +134,12 @@ div.postbottom {
           }}<br />
         </div>
         <br />
+        <div v-if="post.petImage !== null">
         <img
           class="text"
           v-bind:src="`http://localhost:5000/api/posts/image/${post.petImage.filename}`"
         />
+        </div>
         <br />
         <div class="postbottom">
           <span class="category">Owner: </span>{{ post.ownername }}<br />
