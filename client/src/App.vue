@@ -4,7 +4,6 @@
       <div id="nav-color">
         <navbar/>
       </div>
-      <b-button variant="info">Button</b-button>
       <router-view />
       <main-footer></main-footer>
     </div>
