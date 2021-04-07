@@ -136,7 +136,9 @@ div.postbottom {
         <br />
         <img
           class="text"
-          v-bind:src="`http://localhost:5000/api/posts/image/${post.petImage.filename}`"
+          v-bind:src="
+            `http://192.168.168.143:5000/api/posts/image/${post.petImage.filename}`
+          "
         />
         <br />
         <div class="postbottom">
@@ -151,6 +153,9 @@ div.postbottom {
 
 <script>
 import PostService from "../PostService";
+import Vue from "vue";
+import Toasted from "vue-toasted";
+Vue.use(Toasted);
 export default {
   name: "PostComponent",
   data() {
@@ -181,31 +186,35 @@ export default {
   },
   methods: {
     async createPost() {
+      Vue.toasted.show("Pet Added!!", {
+        duration: 2000,
+      });
       const formData = new FormData();
-      formData.append('petname', this.petname);
-      formData.append('weight', this.weight);
-      formData.append('age', this.age);
-      formData.append('breed', this.breed);
-      formData.append('neutered', this.neutered);
-      formData.append('ownername', this.ownername);
-      formData.append('gender', this.gender);
-      formData.append('petImage', this.petImage);
-      formData.append('likes', this.likes);
-      formData.append('dislikes', this.dislikes);
-      formData.append('personality', this.personality);
-      formData.append('contactinfo', this.contactinfo);
-      await PostService.insertPost(
-        formData
-      );
+      formData.append("petname", this.petname);
+      formData.append("weight", this.weight);
+      formData.append("age", this.age);
+      formData.append("breed", this.breed);
+      formData.append("neutered", this.neutered);
+      formData.append("ownername", this.ownername);
+      formData.append("gender", this.gender);
+      formData.append("petImage", this.petImage);
+      formData.append("likes", this.likes);
+      formData.append("dislikes", this.dislikes);
+      formData.append("personality", this.personality);
+      formData.append("contactinfo", this.contactinfo);
+      await PostService.insertPost(formData);
       this.posts = await PostService.getPosts();
     },
     async deletePost(id) {
+      Vue.toasted.show("Pet Deleted!!", {
+        duration: 2000,
+      });
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
     },
     onFileSelected(event) {
       this.petImage = event.target.files[0];
-    }
+    },
   },
 };
 </script>
