@@ -7,11 +7,13 @@
                 Douglas Rudy, Stephan Gunawardana, Alex Helmick
             </div>
             <div id="site-name">
-            <br> <br>
+            <br>
                 Pet Tinder
             </div>
             <div id="source-code">
-                <br>
+                <br> 
+                <b-icon-github style="font-size: larger;"> </b-icon-github>
+                <br>   
                 <span id="category">Source Code:</span>
                 <a href="https://github.com/dmrudy17/NoSQL-Term"> https://github.com/dmrudy17/NoSQL-Term</a>
             </div>
@@ -39,6 +41,9 @@ export default {
   border-top: 2px solid lightgrey;
   width: 100%;
   display: table;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 #authors {
@@ -60,5 +65,4 @@ export default {
 
     font-weight: bold;
 }
-
 </style>
