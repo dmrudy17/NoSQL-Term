@@ -1,16 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav-color">
-      <md-button class="md-icon-button1 md-raised md-plain">
-        <router-link to="/" class="App-home-link">Home</router-link>
-      </md-button>
-      <md-button class="md-icon-button2 md-raised md-plain">
-        <router-link to="/post" class="App-post-link">Posts</router-link>
-      </md-button>
-    </div>
-    <hr />
-    <router-view />
-    <div id="nav-color">
+    <div id="content-wrap">
+      <div id="nav-color">
+        <navbar/>
+      </div>
+      <b-button variant="info">Button</b-button>
+      <router-view />
       <main-footer></main-footer>
     </div>
   </div>
@@ -36,8 +31,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   font-size: larger;
-  height: 60px;
-  background-color: #d3f7f6;
+
+  position: relative;
+  min-height: 100vh;
 }
 .App-home-link {
   color: red;
@@ -59,7 +55,10 @@ export default {
   right: -45%;
   bottom: 1.5%;
 }
-.nav-color {
-  background: red;
+#nav-color {
+  background-color: #d3f7f6;
+}
+#content-wrap {
+  padding-bottom: 150px;
 }
 </style>
