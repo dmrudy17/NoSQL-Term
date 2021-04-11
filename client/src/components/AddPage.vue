@@ -23,6 +23,7 @@
         label-for="create-post"
       >
         <b-form-input
+          type="number"
           id="create-post"
           v-model="weight"
           placeholder="Enter pet weight"
@@ -36,6 +37,7 @@
         label-for="create-post"
       >
         <b-form-input
+          type="number"
           id="create-post"
           v-model="age"
           placeholder="Enter pet age"
