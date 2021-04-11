@@ -1,7 +1,7 @@
 <template>
     <div id ="footer">
         <div style="display:table-row">    
-            <div id="authors">
+            <div id="authors" style="display:table-cell">
             <br>
                 <span id="category">Authors:</span> <br>
                 Douglas Rudy, Stephan Gunawardana, Alex Helmick
@@ -44,10 +44,6 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-
-#authors {
-    display: table-cell;
 }
 
 #source-code {

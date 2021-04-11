@@ -19,11 +19,15 @@
 <style scoped>
     .mb-2 {
         background-color: #d3f7f6;
-        max-width: 20rem;
+        max-width: 25rem;
         height: 15rem;
         margin: 0 auto;
         float: none;
     }
+    .mb-2:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
     .card-text {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

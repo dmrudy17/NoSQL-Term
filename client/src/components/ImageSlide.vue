@@ -71,7 +71,7 @@ export default {
 }
 .main-card {
   border-radius: 60%;
-  width: 1200px;
+  width: 1100px;
   padding: 60px;
 }
 </style>
