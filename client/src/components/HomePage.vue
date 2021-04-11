@@ -1,6 +1,5 @@
 <template>
   <div class="home-foot">
-    <h2>Home Page Placeholder</h2>
 
     <b-container fluid>
       <b-row class="align-self-stretch">
