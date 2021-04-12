@@ -12,6 +12,7 @@ import Toasted from "vue-toasted";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import "./styles/app.scss";
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
