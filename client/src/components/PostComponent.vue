@@ -138,7 +138,7 @@ div.postbottom {
           <img
             class="text"
             v-bind:src="
-              `http://localhost:5000/api/posts/image/${post.petImage.filename}`
+              `http://172.17.196.242:5000/api/posts/image/${post.petImage.filename}`
             "
           />
         </div>
