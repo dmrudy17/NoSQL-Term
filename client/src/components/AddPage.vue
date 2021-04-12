@@ -22,13 +22,12 @@
         label="Pet Weight*:"
         label-for="create-post"
       >
-        <b-form-input
-          type="number"
+        <b-form-select
           id="create-post"
           v-model="weight"
-          placeholder="Enter pet weight"
+          :options="weights"
           required
-        ></b-form-input>
+        ></b-form-select>
       </b-form-group>
 
       <b-form-group
@@ -62,12 +61,12 @@
         label="Pet Neutered Status*:"
         label-for="create-post"
       >
-        <b-form-input
+        <b-form-select
           id="create-post"
           v-model="neutered"
-          placeholder="Enter pet neutered status (Yes/No)"
+          :options="status"
           required
-        ></b-form-input>
+        ></b-form-select>
       </b-form-group>
 
       <b-form-group
@@ -194,7 +193,9 @@ export default {
       contactinfo: "",
       genders: [{ text: 'Select One', value: null }, 'Male', 'Female', 'Other'],
       personalities: [{ text: 'Select One', value: null}, 'Hyper', 'Shy/Timid', 'Independent', 'Loyal'],
-      ages: [{ text: 'Select One', value: null }, '0 - 6 months', '7 months - 2 years', '3 - 6 years', '7 - 10 years', '10+ years']
+      ages: [{ text: 'Select One', value: null }, '0 - 1/2 year', '1/2 year - 2 years', '3 - 6 years', '7 - 10 years', '10+ years'],
+      status: [{ text: 'Select One', value: null}, 'Yes', 'No'],
+      weights: [{ text: 'Select One', value: null}, 'Under 10 lbs', '10 - 20 lbs', '20 - 40 lbs', '40 - 60 lbs', '60+ lbs']
     };
   },
   methods: {
