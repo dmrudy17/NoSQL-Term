@@ -36,13 +36,12 @@
         label="Pet Age*:"
         label-for="create-post"
       >
-        <b-form-input
-          type="number"
+        <b-form-select
           id="create-post"
           v-model="age"
-          placeholder="Enter pet age"
+          :options="ages"
           required
-        ></b-form-input>
+        ></b-form-select>
       </b-form-group>
 
       <b-form-group
@@ -66,7 +65,7 @@
         <b-form-input
           id="create-post"
           v-model="neutered"
-          placeholder="Enter pet neutered status"
+          placeholder="Enter pet neutered status (Yes/No)"
           required
         ></b-form-input>
       </b-form-group>
@@ -194,7 +193,8 @@ export default {
       personality: null,
       contactinfo: "",
       genders: [{ text: 'Select One', value: null }, 'Male', 'Female', 'Other'],
-      personalities: [{ text: 'Select One', value: null}, 'Hyper', 'Shy/Timid', 'Independent', 'Loyal']
+      personalities: [{ text: 'Select One', value: null}, 'Hyper', 'Shy/Timid', 'Independent', 'Loyal'],
+      ages: [{ text: 'Select One', value: null }, '0 - 6 months', '7 months - 2 years', '3 - 6 years', '7 - 10 years', '10+ years']
     };
   },
   methods: {
@@ -217,6 +217,7 @@ export default {
       formData.append("contactinfo", this.contactinfo);
       await PostService.insertPost(formData);
       this.posts = await PostService.getPosts();
+      this.$router.push('/post');
     },
     onReset(event) {
       event.preventDefault()
