@@ -3,6 +3,7 @@
     <div class="fixed">
       <Vue2InteractDraggable
         @draggedRight="right"
+        @draggedLeft="left"
         :interact-max-rotation="15"
         :interact-out-of-sight-x-coordinate="1200"
         :interact-x-threshold="300"
@@ -10,27 +11,37 @@
         v-if="visible"
       >
         <div class="card">
+          <div v-if="cards[index].petImage !== null">
+            <b-img
+              v-bind:src="
+                `http://localhost:5000/api/posts/image/${cards[index].petImage.filename}`
+              "
+              style="max-width: 20rem;"
+              class="img-thumbnail"
+            />
+          </div>
+
           <b-card
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
             img-top
             tag="article"
             style="max-width: 20rem;"
             class="mb-2"
+            border-variant="primary"
           >
             <b-card-text>
-              <div v-if="this.index < this.cards.length">
-                <h2>Hi my name is {{ cards[index].petname }}</h2>
-                <hr />
-                Weight: {{ cards[index].weight }}<br />
-                Breed: {{ cards[index].breed }}<br />
-                I am {{ cards[index].age }} years old
-              </div>
-              <div v-else>
-                <h2>Sorry out of matches</h2>
+              <div>
+                <div v-if="this.index < this.cards.length">
+                  <h2>Hi my name is {{ cards[index].petname }}</h2>
+                  <hr />
+                  Weight: {{ cards[index].weight }}<br />
+                  Breed: {{ cards[index].breed }}<br />
+                  I am {{ cards[index].age }} years old
+                </div>
+                <div v-else>
+                  <h2>Sorry out of matches</h2>
+                </div>
               </div>
             </b-card-text>
-            <b-button href="#" variant="primary">Like</b-button>
           </b-card>
         </div>
       </Vue2InteractDraggable>
@@ -74,6 +85,7 @@ export default {
     } catch (err) {
       this.error = err.message;
     }
+    console.log(this.cards);
   },
   methods: {
     right() {
@@ -81,6 +93,15 @@ export default {
       setTimeout(() => {
         this.visible = true;
         this.index++;
+        console.log("Liked");
+      }, 300);
+    },
+    left() {
+      setTimeout(() => (this.visible = false), 200);
+      setTimeout(() => {
+        this.visible = true;
+        this.index++;
+        console.log("Disliked");
       }, 300);
     },
   },
@@ -92,9 +113,15 @@ export default {
 }
 .fixed {
   position: fixed;
-  left: 50%;
+  left: 40%;
+  top: 20%;
 }
 .card {
   border-radius: 2px;
+  background-color: #d3f7f6;
+}
+.fixed:hover {
+  transform: scale(1.16);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 </style>
