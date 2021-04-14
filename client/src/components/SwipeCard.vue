@@ -9,7 +9,7 @@
         Start Swiping Now!
         </b-card-text>
       </div>
-        <router-link to="/post">
+        <router-link to="/add">
             <b-icon icon="chevron-double-right" variant="info" style="width: 100px; height: 100px" animation="cylon"></b-icon>
         </router-link>
     </b-card>
