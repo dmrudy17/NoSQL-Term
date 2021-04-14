@@ -15,11 +15,40 @@ import VueMaterial from "vue-material";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
 import Vue from "vue";
+import PostService from "./PostService";
 
 Vue.use(VueMaterial);
 export default {
   name: "App",
+  data() {
+    return {
+      posts: []
+    };
+  },
+  async created() {
+    this.posts = await PostService.getPosts();
+    
+    setInterval(() => {
+      let today = new Date();
+
+      for (let i = this.posts.length - 1; i >=0; i--)
+      {
+        if (today.getDate() - this.posts[i].createdAt.getDate() >= 4)
+        {
+          console.log(`${this.posts[i].petname} will be deleted from the database`);
+        }
+        else if (this.posts[i].createdAt.getDate() > today.getDate())
+        {
+          if (this.posts[i].createdAt.getDate() - today.getDate() <= 24)
+          {
+            console.log(`${this.posts[i].petname} will be deleted from the database`);
+          }
+        }
+      }
+    }, 86400000);
+  },
 };
+
 </script>
 
 <style>

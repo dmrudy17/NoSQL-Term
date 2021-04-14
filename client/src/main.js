@@ -28,13 +28,3 @@ new Vue({
   router,
   render: (h) => h(App),
 }).$mount("#app");
-
-let getQueueLength = function() {
-  return Math.round(12 * Math.random());
-};
-
-setInterval(function() {
-  let queueLength = getQueueLength();
-
-  console.log(`The queue at the McDonalds drive through is now ${queueLength} cars long.`);
-},3000);
