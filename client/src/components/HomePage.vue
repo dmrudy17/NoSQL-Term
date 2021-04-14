@@ -6,7 +6,6 @@
         <b-col col><br /><br /><br /><br /><swipe-card /></b-col>
       </b-row>
     </b-container>
-    <swiper-one></swiper-one>
   </div>
 </template>
 
