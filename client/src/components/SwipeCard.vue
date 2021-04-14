@@ -6,7 +6,7 @@
           Start Swiping Now!
         </b-card-text>
       </div>
-      <router-link to="/post">
+      <router-link to="/add">
         <b-icon
           icon="chevron-double-right"
           variant="info"
