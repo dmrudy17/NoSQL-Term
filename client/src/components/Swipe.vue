@@ -50,7 +50,10 @@
 </template>
 <script>
 import { Vue2InteractDraggable } from "vue2-interact";
+import Vue from "vue";
 import PostService from "../PostService";
+import Toasted from "vue-toasted";
+Vue.use(Toasted);
 export default {
   components: {
     Vue2InteractDraggable,
@@ -74,7 +77,9 @@ export default {
       dislikes: "",
       personality: "",
       contactinfo: "",
-      index: 0,
+      //index starts at on so it does not take default dog into swipe
+      index: 1,
+      defaultDog: [],
     };
   },
   //This function will run at load of the component and fill the array with whole
@@ -85,13 +90,21 @@ export default {
     } catch (err) {
       this.error = err.message;
     }
-    console.log(this.cards);
+    //Set default dog on creation of conponent
+    this.defaultDog = this.cards[0];
+    //console.log(this.defaultDog.personality);
   },
   methods: {
     right() {
       setTimeout(() => (this.visible = false), 200);
       setTimeout(() => {
         this.visible = true;
+
+        if (this.defaultDog.personality == this.cards[this.index].personality) {
+          Vue.toasted.show("Its a match", {
+            duration: 2000,
+          });
+        }
         this.index++;
         console.log("Liked");
       }, 300);
