@@ -35,7 +35,7 @@
                   <hr />
                   Weight: {{ cards[index].weight }}<br />
                   Breed: {{ cards[index].breed }}<br />
-                  I am {{ cards[index].age }} years old
+                  I am {{ cards[index].age }} old
                 </div>
                 <div v-else>
                   <h2>Sorry out of matches</h2>
@@ -80,6 +80,7 @@ export default {
       //index starts at on so it does not take default dog into swipe
       index: 1,
       defaultDog: [],
+      starVal: 0,
     };
   },
   //This function will run at load of the component and fill the array with whole
@@ -99,14 +100,41 @@ export default {
       setTimeout(() => (this.visible = false), 200);
       setTimeout(() => {
         this.visible = true;
-
+        this.starVal = 0;
         if (this.defaultDog.personality == this.cards[this.index].personality) {
-          Vue.toasted.show("Its a match", {
+          this.starVal++;
+        }
+        if (this.defaultDog.weight == this.cards[this.index].weight) {
+          this.starVal++;
+        }
+        if (this.defaultDog.age == this.cards[this.index].age) {
+          this.starVal++;
+        }
+
+        if (this.starVal == 0) {
+          Vue.toasted.show("Sorry no match", {
+            theme: "bubble",
+            duration: 2000,
+          });
+        } else if (this.starVal == 1) {
+          Vue.toasted.show("Its a 1 star match", {
+            theme: "bubble",
+            duration: 2000,
+          });
+        } else if (this.starVal == 2) {
+          Vue.toasted.show("Its a 2 star match", {
+            theme: "bubble",
+            duration: 2000,
+          });
+        } else if (this.starVal == 3) {
+          Vue.toasted.show("Its a 3 star match!!", {
+            theme: "bubble",
             duration: 2000,
           });
         }
+
         this.index++;
-        console.log("Liked");
+        console.log(this.starVal);
       }, 300);
     },
     left() {
