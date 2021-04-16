@@ -33,7 +33,7 @@ export default {
 
       for (let i = this.posts.length - 1; i >=0; i--)
       {
-        if (today.getDate() - this.posts[i].createdAt.getDate() >= 4)
+        if (today.getDate() - this.posts[i].createdAt.getDate() >= 7)
         {
           console.log(`${this.posts[i].petname} will be deleted from the database`);
         }
