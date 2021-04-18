@@ -5,6 +5,7 @@
         <div style="font-size: 5px;">
           <i class="fas fa-dog fa-7x"></i>
         </div>
+        <b-navbar-brand>Pet Tinder</b-navbar-brand>
         <b-nav-item href="#/">Home</b-nav-item>
         <b-nav-item href="#/post" right>Posts</b-nav-item>
       </b-navbar-nav>

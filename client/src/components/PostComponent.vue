@@ -19,94 +19,6 @@ div.postbottom {
 <template>
   <div class="container">
     <h1>Current Pets</h1>
-    <div class="post">
-      <div class="create-post">
-        <label for="create-post"><strong>Add Your Pet Info</strong></label>
-        <br />
-        <br />
-        <input
-          type="text"
-          id="create-post"
-          v-model="petname"
-          placeholder="Pet Name"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="weight"
-          placeholder="Pet Weight"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="age"
-          placeholder="Pet Age"
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          id="create-post"
-          v-model="breed"
-          placeholder="Breed"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="neutered"
-          placeholder="Neutered Status"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="ownername"
-          placeholder="Owner Name"
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          id="create-post"
-          v-model="gender"
-          placeholder="Gender"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="likes"
-          placeholder="Likes"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="dislikes"
-          placeholder="Dislikes"
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          id="create-post"
-          v-model="personality"
-          placeholder="Personality"
-        />
-        <input
-          type="text"
-          id="create-post"
-          v-model="contactinfo"
-          placeholder="Phone Number"
-        />
-        <input
-          type="file"
-          id="create-post"
-          ref="petImage"
-          @change="onFileSelected"
-        />
-        <br />
-        <br />
-        <button v-on:click="createPost" id="postButton">Post!</button>
-      </div>
-    </div>
     <hr />
     <p class="error" v-if="error">{{ error }}</p>
     <div class="posts-container">
@@ -187,35 +99,12 @@ export default {
     }
   },
   methods: {
-    async createPost() {
-      Vue.toasted.show("Pet Added!!", {
-        duration: 2000,
-      });
-      const formData = new FormData();
-      formData.append("petname", this.petname);
-      formData.append("weight", this.weight);
-      formData.append("age", this.age);
-      formData.append("breed", this.breed);
-      formData.append("neutered", this.neutered);
-      formData.append("ownername", this.ownername);
-      formData.append("gender", this.gender);
-      formData.append("petImage", this.petImage);
-      formData.append("likes", this.likes);
-      formData.append("dislikes", this.dislikes);
-      formData.append("personality", this.personality);
-      formData.append("contactinfo", this.contactinfo);
-      await PostService.insertPost(formData);
-      this.posts = await PostService.getPosts();
-    },
     async deletePost(id) {
       Vue.toasted.show("Pet Deleted!!", {
         duration: 2000,
       });
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
-    },
-    onFileSelected(event) {
-      this.petImage = event.target.files[0];
     },
   },
 };
