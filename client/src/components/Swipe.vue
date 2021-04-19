@@ -4,6 +4,8 @@
       <Vue2InteractDraggable
         @draggedRight="right"
         @draggedLeft="left"
+        @draggedUp="up"
+        @draggedDown="down"
         :interact-max-rotation="15"
         :interact-out-of-sight-x-coordinate="1200"
         :interact-x-threshold="300"
@@ -35,7 +37,8 @@
                   <hr />
                   Weight: {{ cards[index].weight }}<br />
                   Breed: {{ cards[index].breed }}<br />
-                  I am {{ cards[index].age }} old
+                  I am {{ cards[index].age }} old <br />
+                  Personality: {{ cards[index].personality }}
                 </div>
                 <div v-else>
                   <h2>Sorry out of matches</h2>
@@ -143,6 +146,28 @@ export default {
         this.visible = true;
         this.index++;
         console.log("Disliked");
+      }, 300);
+    },
+    up() {
+      setTimeout(() => (this.visible = false), 200);
+      setTimeout(() => {
+        this.visible = true;
+        Vue.toasted.show("Invalid Swipe!", {
+          theme: "bubble",
+          duration: 2000,
+        });
+        this.index++;
+      }, 300);
+    },
+    down() {
+      setTimeout(() => (this.visible = false), 200);
+      setTimeout(() => {
+        this.visible = true;
+        Vue.toasted.show("Invalid Swipe!", {
+          theme: "bubble",
+          duration: 2000,
+        });
+        this.index++;
       }, 300);
     },
   },
