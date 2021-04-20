@@ -38,7 +38,8 @@
                   Weight: {{ cards[index].weight }}<br />
                   Breed: {{ cards[index].breed }}<br />
                   I am {{ cards[index].age }} old <br />
-                  Personality: {{ cards[index].personality }}
+                  Personality: {{ cards[index].personality }} I am
+                  {{ cards[index].age }} old
                 </div>
                 <div v-else>
                   <h2>Sorry out of matches</h2>
@@ -148,6 +149,7 @@ export default {
         console.log("Disliked");
       }, 300);
     },
+<<<<<<< HEAD
     up() {
       setTimeout(() => (this.visible = false), 200);
       setTimeout(() => {
@@ -170,6 +172,8 @@ export default {
         this.index++;
       }, 300);
     },
+=======
+>>>>>>> 7dbd0fb78e0904b884b4b2aa31dc4e5b681c5d48
   },
 };
 </script>
