@@ -4,7 +4,6 @@ import HomePage from "@/components/HomePage";
 import PostComponent from "@/components/PostComponent";
 import Swipe from "@/components/Swipe";
 import AddPage from "@/components/AddPage";
-import Swipe from "@/components/Swipe";
 
 Vue.use(Router);
 

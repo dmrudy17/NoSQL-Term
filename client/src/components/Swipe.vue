@@ -149,7 +149,6 @@ export default {
         console.log("Disliked");
       }, 300);
     },
-<<<<<<< HEAD
     up() {
       setTimeout(() => (this.visible = false), 200);
       setTimeout(() => {
@@ -172,8 +171,6 @@ export default {
         this.index++;
       }, 300);
     },
-=======
->>>>>>> 7dbd0fb78e0904b884b4b2aa31dc4e5b681c5d48
   },
 };
 </script>
