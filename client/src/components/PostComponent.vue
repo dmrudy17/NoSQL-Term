@@ -58,7 +58,7 @@ div.postbottom {
         <div class="postbottom">
           <span class="category">Owner: </span>{{ post.ownername }}<br />
         </div>
-        <button @click="deletePost(post._id)">Delete!</button>
+        <b-button variant="danger" @click="deletePost(post._id)">Delete!</b-button>
       </div>
     </div>
   </div>
