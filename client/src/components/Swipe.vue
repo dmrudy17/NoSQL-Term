@@ -38,8 +38,7 @@
                   Weight: {{ cards[index].weight }}<br />
                   Breed: {{ cards[index].breed }}<br />
                   I am {{ cards[index].age }} old <br />
-                  Personality: {{ cards[index].personality }} I am
-                  {{ cards[index].age }} old
+                  Personality: {{ cards[index].personality }}
                 </div>
                 <div v-else>
                   <h2>Sorry out of matches</h2>
@@ -135,6 +134,9 @@ export default {
             theme: "bubble",
             duration: 2000,
           });
+        }
+        if (this.starVal == 1 || this.starVal == 2 || this.starVal) {
+          alert("My phone number is: " + this.cards[this.index].contactinfo);
         }
 
         this.index++;
