@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="overflow-scroll">
     <div class="fixed">
       <Vue2InteractDraggable
         @draggedRight="right"
@@ -178,12 +178,12 @@ export default {
 </script>
 <style scoped>
 .main-container {
-  background-color: aqua;
 }
 .fixed {
   position: fixed;
   left: 40%;
-  top: 20%;
+  padding-top: 5%;
+  padding-bottom: 20%;
 }
 .card {
   border-radius: 2px;
@@ -191,6 +191,5 @@ export default {
 }
 .fixed:hover {
   transform: scale(1.16);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 </style>
