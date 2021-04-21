@@ -57,7 +57,6 @@ div.postbottom {
         <br />
         <div class="postbottom">
           <span class="category">Owner: </span>{{ post.ownername }}<br />
-          <span class="category">Phone: </span>{{ post.contactinfo }}<br />
         </div>
         <button @click="deletePost(post._id)">Delete!</button>
       </div>
