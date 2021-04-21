@@ -8,6 +8,7 @@
         <b-navbar-brand>Pet Tinder</b-navbar-brand>
         <b-nav-item href="#/">Home</b-nav-item>
         <b-nav-item href="#/post" right>Posts</b-nav-item>
+        <b-nav-item href="#/swipe" right>Swipe</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
   </div>
