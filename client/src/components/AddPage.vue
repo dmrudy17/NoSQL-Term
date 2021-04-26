@@ -149,6 +149,20 @@
 
       <b-form-group
         id="create-post"
+        label="Email*:"
+        label-for="create-post"
+      >
+        <b-form-input
+          id="create-post"
+          v-model="email"
+          type="email"
+          placeholder="Enter pet owner's email"
+          required
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group
+        id="create-post"
         label="Pet Image*:"
         label-for="create-post"
       >
@@ -191,6 +205,7 @@ export default {
       dislikes: "",
       personality: null,
       contactinfo: "",
+      email: "",
       genders: [{ text: 'Select One', value: null }, 'Male', 'Female', 'Other'],
       personalities: [{ text: 'Select One', value: null}, 'Hyper', 'Shy/Timid', 'Independent', 'Loyal'],
       ages: [{ text: 'Select One', value: null }, '0 - 1/2 year', '1/2 year - 2 years', '3 - 6 years', '7 - 10 years', '10+ years'],
@@ -216,6 +231,7 @@ export default {
       formData.append("dislikes", this.dislikes);
       formData.append("personality", this.personality);
       formData.append("contactinfo", this.contactinfo);
+      formData.append("email", this.email);
       await PostService.insertPost(formData);
       this.posts = await PostService.getPosts();
       this.$router.push('/post');
@@ -233,6 +249,7 @@ export default {
       this.dislikes = ""
       this.persoanlity = null
       this.contactinfo = ""
+      this.email = ""
       this.petImage = null
     }
   }

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const url = "http://localhost:5000/api/posts/";
+const emailUrl = "http://localhost:5000/api/posts/email/";
 
 /* eslint-disable no-async-promise-executor */
 
@@ -37,6 +38,14 @@ class PostService {
       .catch(function() {
         console.log("FAILURE");
       });
+  }
+
+  // Send notification email
+  static sendEmail(petname, email) {
+    return axios.post(emailUrl, {
+      petname,
+      email,
+    });
   }
 
   // Delete Post

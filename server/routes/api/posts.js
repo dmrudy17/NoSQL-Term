@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const mongoose = require("mongoose");
 const GridFsStorage = require("multer-gridfs-storage");
 const Grid = require("gridfs-stream");
+const nodemailer = require("nodemailer");
 
 // Mongo URI
 const mongoURI =
@@ -105,10 +106,44 @@ router.post("/", upload.single("petImage"), async (req, res) => {
     personality: req.body.personality,
     ownername: req.body.ownername,
     contactinfo: req.body.contactinfo,
+    email: req.body.email,
     createdAt: new Date(),
     text: req.body.text,
   });
   res.status(201).send();
+});
+
+// Send notification email
+router.post("/email", async (req, res) => {
+  const email = req.body.email;
+  const petname = req.body.petname;
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "pettinderteam@gmail.com",
+      pass: "pettinder",
+    },
+  });
+
+  const msg = {
+    from: '"The Pet Tinder Team" <pettinderteam@gmail.com>', // sender address
+    to: `${email}`, // list of receivers
+    subject: "You have a new match!", // Subject line
+    text:
+      `${petname}` +
+      " wants to match with your furry friend!\nVisit our Posts page to learn more about them!\n\nSincerely,\nThe Pet Tinder Team", // plain text body
+  };
+
+  // send mail with defined transport object
+  await transporter.sendMail(msg, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.status(201).send();
+    }
+  });
 });
 
 // Delete Post
