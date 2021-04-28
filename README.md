@@ -1,12 +1,22 @@
 # Project Setup
 
+## Required Platform
+
+- Windows 10 (testing on other platforms yet to be carried out)
+
+## Programming Languages
+
+- Vue
+- JavaScript
+- HTML/CSS
+
 ## prerequisite
 
 ```
 git checkout master
 ```
 
-## root
+## top-level
 
 ```
 npm install
@@ -15,6 +25,7 @@ npm install
 ## client
 
 ```
+cd client // from top-level
 npm install
 ```
 
@@ -39,6 +50,7 @@ npm run lint
 ## server
 
 ```
+cd server // from top-level
 npm run dev
 ```
 
