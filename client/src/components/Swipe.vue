@@ -99,6 +99,10 @@ export default {
     //console.log(this.defaultDog.personality);
   },
   methods: {
+    async packageEmail() {
+      console.log("I was called");
+      await PostService.sendEmail(this.defaultDog.petname, this.cards[this.index].email);
+    },
     right() {
       setTimeout(() => (this.visible = false), 200);
       setTimeout(() => {
@@ -135,8 +139,9 @@ export default {
             duration: 2000,
           });
         }
-        if (this.starVal == 1 || this.starVal == 2 || this.starVal) {
+        if (this.starVal == 1 || this.starVal == 2 || this.starVal == 3) {
           alert("My phone number is: " + this.cards[this.index].contactinfo);
+          this.packageEmail();
         }
 
         this.index++;
